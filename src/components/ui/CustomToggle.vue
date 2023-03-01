@@ -3,14 +3,18 @@ const props = defineProps({
    isChecked: {
       type: Boolean,
       default: false,
+   },
+   name: {
+      type: String,
+      default: 'toggle'
    }
 })
 </script>
 
 <template>
    <div class="custom-toggle">
-      <input type="checkbox" name="toggle" id="toggle" :checked="isChecked">
-      <label for="toggle">
+      <input type="checkbox" :name="name" :id="name" :checked="isChecked">
+      <label :for="name">
          <slot />
       </label>
    </div>
@@ -21,16 +25,6 @@ const props = defineProps({
    display: flex;
    align-items: center;
    gap: .5em;
-
-   label {
-      cursor: pointer;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-   }
 
    input {
       --height: 1.5em;
@@ -70,6 +64,16 @@ const props = defineProps({
             left: calc(100% - (var(--height) - var(--padding)));
          }
       }
+   }
+
+   label {
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
    }
 }
 </style>
