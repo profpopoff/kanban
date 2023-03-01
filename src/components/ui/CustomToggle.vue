@@ -27,15 +27,16 @@ const props = defineProps({
    gap: .5em;
 
    input {
-      --height: 1.5em;
-      --padding: .3em;
+      $height: 1.5em;
+      $padding: .3em;
+      $defaultColor: hsl(var(--grey-color));
+      $checkedColor: hsl(var(--accent-color));
 
       position: relative;
-      width: 3em;
-      height: var(--height);
-      background: #696969;
-      /* background: hsl(var(--grey-color)); */
-      border-radius: 2em;
+      height: $height;
+      width: calc($height * 2);
+      background: $defaultColor;
+      border-radius: $height;
       cursor: pointer;
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -46,22 +47,21 @@ const props = defineProps({
          content: "";
          display: inline-block;
          position: absolute;
-         left: var(--padding);
+         left: $padding;
          top: 50%;
-         width: calc(var(--height) - var(--padding) * 2);
+         transform: translateY(-50%);
+         width: calc($height - 2 * $padding);
          aspect-ratio: 1;
          background-color: #fff;
          border-radius: 50%;
-         transform: translate(0, -50%);
          transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.4);
       }
 
       &:checked {
-         /* background-color: hsl(var(--accent-color)); */
-         background-color: #640101;
+         background-color: $checkedColor;
 
          &::after {
-            left: calc(100% - (var(--height) - var(--padding)));
+            left: calc(100% - ($height - $padding));
          }
       }
    }
