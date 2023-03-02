@@ -29,8 +29,8 @@ const props = defineProps({
    input {
       $height: 1.5em;
       $padding: .3em;
-      $defaultColor: hsl(var(--grey-color));
-      $checkedColor: hsl(var(--accent-color));
+      $defaultColor: hsl(var(--default-color, var(--grey-color)));
+      $checkedColor: hsl(var(--checked-color, var(--accent-color)));
 
       position: relative;
       height: $height;
@@ -74,6 +74,10 @@ const props = defineProps({
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+
+      &:empty {
+         display: none;
+      }
    }
 }
 </style>
