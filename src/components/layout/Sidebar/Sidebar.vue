@@ -9,7 +9,10 @@ import DarkModeToggle from './DarkModeToggle.vue'
       <header>
          <AppLogo />
       </header>
-      <DarkModeToggle />
+      <div class="main">
+         <nav>nav</nav>
+         <DarkModeToggle />
+      </div>
    </div>
 </template>
 
@@ -17,6 +20,8 @@ import DarkModeToggle from './DarkModeToggle.vue'
 .sidebar {
    grid-area: sidebar;
 
+   display: flex;
+   flex-direction: column;
    background-color: hsl(var(--element-color));
    border-right: 1px solid hsl(var(--grey-color) / .25);
    transition: var(--dark-theme-transition);
@@ -27,6 +32,14 @@ import DarkModeToggle from './DarkModeToggle.vue'
       height: 6rem;
       display: flex;
       align-items: center;
+   }
+
+   .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 2rem;
    }
 }
 </style>
