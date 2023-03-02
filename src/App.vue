@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import AppHeader from './components/layout/Header/AppHeader.vue'
-import AppSidebar from './components/layout/Sidebar/AppSidebar.vue'
+import Header from './components/layout/Header/Header.vue'
+import Sidebar from './components/layout/Sidebar/Sidebar.vue'
 </script>
 
 <template>
   <div class="container">
-    <AppHeader />
-    <AppSidebar />
+    <Header />
+    <Sidebar />
     <main>
       <h1 class="h1">main</h1>
     </main>
