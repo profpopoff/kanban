@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppLogo from './Logo.vue'
 import DarkModeToggle from './DarkModeToggle.vue'
-
+import BoardList from './BoardList.vue'
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import DarkModeToggle from './DarkModeToggle.vue'
          <AppLogo />
       </header>
       <div class="main">
-         <nav>nav</nav>
+         <BoardList />
          <DarkModeToggle />
       </div>
    </div>
@@ -26,7 +26,8 @@ import DarkModeToggle from './DarkModeToggle.vue'
    border-right: 1px solid hsl(var(--grey-color) / .25);
    transition: var(--dark-theme-transition);
 
-   padding-inline: 1.5rem;
+   --padding-inline: 1.5rem;
+   padding-inline: var(--padding-inline);
 
    header {
       height: 6rem;
@@ -39,7 +40,7 @@ import DarkModeToggle from './DarkModeToggle.vue'
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding-bottom: 2rem;
+      padding-block: 1rem 2rem;
    }
 }
 </style>
