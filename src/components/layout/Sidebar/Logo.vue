@@ -28,6 +28,10 @@ import KanbanIcon from '../../icons/KanbanIcon.vue'
       font-size: $logo-height;
       line-height: 1;
       font-weight: 700;
+
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
    }
 }
 </style>
