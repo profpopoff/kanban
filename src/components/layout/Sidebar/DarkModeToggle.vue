@@ -10,9 +10,9 @@ const toggleDark = useToggle(isDark)
 
 <template>
    <div class="dark-mode-toggle">
-      <SunIcon />
+      <SunIcon class="icon" @click="isDark = false" />
       <CustomToggle class="toggle" @change="toggleDark()" :isChecked="isDark" />
-      <MoonIcon />
+      <MoonIcon class="icon" @click="isDark = true" />
    </div>
 </template>
 
@@ -30,6 +30,10 @@ const toggleDark = useToggle(isDark)
    .toggle {
       --default-color: var(--accent-color);
       --checked-color: var(--accent-color);
+   }
+
+   .icon {
+      cursor: pointer;
    }
 }
 </style>
