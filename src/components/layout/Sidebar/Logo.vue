@@ -17,7 +17,6 @@ import KanbanIcon from '../../icons/KanbanIcon.vue'
    height: $logo-height;
    display: flex;
    gap: 1rem;
-   align-items: flex-end;
 
    .icon {
       font-size: $logo-height;
