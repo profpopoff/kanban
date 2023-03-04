@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 import BoardIcon from '../../icons/BoardIcon.vue'
+import AddBoardIcon from '../../icons/AddBoardIcon.vue'
 
-const currentBoard = ref('board1')
-const boards = ref([{ id: 'board1', title: 'platform launch' }, { id: 'board2', title: 'marketing plan' }, { id: 'board3', title: 'roadmap' }, { id: 'board4', title: 'roadmap 2' }])
+const currentBoard = ref('1')
+const boards = ref([{ id: '1', title: 'platform launch', boardIconId: 3 }, { id: '2', title: 'marketing plan', boardIconId: 6 }, { id: '3', title: 'roadmap' }, { id: '4', title: 'roadmap 2', boardIconId: 1 }])
 </script>
 
 <template>
@@ -14,14 +15,14 @@ const boards = ref([{ id: 'board1', title: 'platform launch' }, { id: 'board2', 
             <li v-for="board in boards">
                <input type="radio" :id="board.id" :value="board.id" v-model="currentBoard" />
                <label class="board-button" :for="board.id">
-                  <BoardIcon class="icon" />
+                  <BoardIcon :boardIconId="board.boardIconId" class="icon" />
                   <span>{{ board.title }}</span>
                </label>
             </li>
          </ul>
       </nav>
       <button class="board-button new-board">
-         <BoardIcon class="icon" />
+         <AddBoardIcon class="icon" />
          <span>create new board</span>
       </button>
    </div>
@@ -31,13 +32,9 @@ const boards = ref([{ id: 'board1', title: 'platform launch' }, { id: 'board2', 
 .boards {
    display: flex;
    flex-direction: column;
-   gap: .5rem;
-
-   /* &>* {
-      outline: 1px solid red;
-   } */
 
    h2 {
+      margin-bottom: 1rem;
       text-transform: uppercase;
       font-size: 1rem;
       font-weight: 600;
@@ -50,7 +47,13 @@ const boards = ref([{ id: 'board1', title: 'platform launch' }, { id: 'board2', 
       align-items: center;
       gap: 1rem;
       text-transform: capitalize;
+      color: hsl(var(--grey-color));
       cursor: pointer;
+      transition: all .3s ease-in-out;
+
+      &:hover {
+         color: hsl(var(--accent-color));
+      }
 
       .icon {
          height: 1.2rem;
@@ -97,10 +100,7 @@ const boards = ref([{ id: 'board1', title: 'platform launch' }, { id: 'board2', 
 
             label {
                position: relative;
-               color: hsl(var(--grey-color));
                isolation: isolate;
-
-               transition: all .3s ease-in-out;
 
                &::before {
                   content: '';
@@ -114,10 +114,6 @@ const boards = ref([{ id: 'board1', title: 'platform launch' }, { id: 'board2', 
                   opacity: 0;
                   transition: all .3s ease-in-out;
                }
-
-               &:hover {
-                  color: hsl(var(--accent-color));
-               }
             }
          }
       }
@@ -126,8 +122,7 @@ const boards = ref([{ id: 'board1', title: 'platform launch' }, { id: 'board2', 
    .new-board {
       border: none;
       background-color: transparent;
-      padding: 0;
-      color: hsl(var(--accent-color));
+      padding-inline: 0;
       padding-block: 1rem;
    }
 }
