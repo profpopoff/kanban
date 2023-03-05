@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Header from './components/layout/Header/Header.vue'
 import Sidebar from './components/layout/Sidebar/Sidebar.vue'
+import Board from './components/layout/Board/Board.vue'
 </script>
 
 <template>
@@ -8,7 +9,7 @@ import Sidebar from './components/layout/Sidebar/Sidebar.vue'
     <Header />
     <Sidebar />
     <main>
-      <h1 class="h1">main</h1>
+      <Board />
     </main>
   </div>
 </template>
@@ -26,6 +27,7 @@ import Sidebar from './components/layout/Sidebar/Sidebar.vue'
 
   main {
     grid-area: main;
+    overflow: auto;
   }
 }
 </style>
