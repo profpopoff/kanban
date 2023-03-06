@@ -2,9 +2,11 @@
 import { ref } from 'vue'
 import BoardIcon from '../../icons/BoardIcon.vue'
 import AddBoardIcon from '../../icons/AddBoardIcon.vue'
+import { useBoardsStore } from '../../../stores/boards'
+import { storeToRefs } from 'pinia'
 
-const currentBoard = ref('1')
-const boards = ref([{ id: '1', title: 'platform launch', boardIconId: 3 }, { id: '2', title: 'marketing plan', boardIconId: 6 }, { id: '3', title: 'roadmap' }, { id: '4', title: 'roadmap 2', boardIconId: 1 }])
+const store = useBoardsStore()
+const { boards, currentBoardId } = storeToRefs(store)
 </script>
 
 <template>
@@ -13,8 +15,8 @@ const boards = ref([{ id: '1', title: 'platform launch', boardIconId: 3 }, { id:
       <nav>
          <ul>
             <li v-for="board in boards">
-               <input type="radio" :id="board.id" :value="board.id" v-model="currentBoard" />
-               <label class="board-button" :for="board.id">
+               <input type="radio" :id="board.id.toString()" :value="board.id" v-model="currentBoardId" />
+               <label class="board-button" :for="board.id.toString()">
                   <BoardIcon :boardIconId="board.boardIconId" class="icon" />
                   <span>{{ board.title }}</span>
                </label>

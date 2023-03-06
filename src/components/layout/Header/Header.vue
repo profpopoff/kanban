@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import CustomButton from '../../ui/CustomButton.vue'
+import { useBoardsStore } from '../../../stores/boards'
+import { storeToRefs } from 'pinia'
 
+const store = useBoardsStore()
+const { currentBoard } = storeToRefs(store)
 </script>
 
 <template>
    <header>
-      <h1>Platform launch</h1>
+      <h1>{{ currentBoard?.title }}</h1>
       <CustomButton>add new task</CustomButton>
    </header>
 </template>
