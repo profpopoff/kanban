@@ -28,6 +28,7 @@ header {
    padding-inline: 1.5rem;
 
    h1 {
+      text-transform: capitalize;
       font-size: 1.7rem;
       font-weight: 600;
    }
