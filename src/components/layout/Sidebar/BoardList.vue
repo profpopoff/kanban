@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import BoardIcon from '../../icons/BoardIcon.vue'
 import AddBoardIcon from '../../icons/AddBoardIcon.vue'
 import { useBoardsStore } from '../../../stores/boards'
 import { storeToRefs } from 'pinia'
+import CreateBoard from './CreateBoard.vue'
+import { ref } from 'vue'
+import Modal from '../../ui/Modal.vue'
 
 const store = useBoardsStore()
 const { boards, currentBoardId } = storeToRefs(store)
+
+const createBoardActive = ref(false)
+const toggleCreateBoardModal = () => createBoardActive.value = !createBoardActive.value
 </script>
 
 <template>
@@ -23,10 +28,13 @@ const { boards, currentBoardId } = storeToRefs(store)
             </li>
          </ul>
       </nav>
-      <button class="board-button new-board">
+      <button class="board-button new-board" @click="toggleCreateBoardModal">
          <AddBoardIcon class="icon" />
          <span>create new board</span>
       </button>
+      <Modal v-model:isActive="createBoardActive">
+         <CreateBoard />
+      </Modal>
    </div>
 </template>
 
