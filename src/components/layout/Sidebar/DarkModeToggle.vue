@@ -10,9 +10,9 @@ const toggleDark = useToggle(isDark)
 
 <template>
    <div class="dark-mode-toggle">
-      <SunIcon class="icon" @click="isDark = false" />
+      <SunIcon class="icon" @click="toggleDark()" />
       <CustomToggle class="toggle" @change="toggleDark()" :isChecked="isDark" />
-      <MoonIcon class="icon" @click="isDark = true" />
+      <MoonIcon class="icon" @click="toggleDark()" />
    </div>
 </template>
 
