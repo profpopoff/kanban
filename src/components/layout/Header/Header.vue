@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CustomButton from '../../ui/CustomButton.vue'
+import DefaultButton from '../../ui/DefaultButton.vue'
 import { useBoardsStore } from '../../../stores/boards'
 import { storeToRefs } from 'pinia'
 
@@ -10,7 +10,7 @@ const { currentBoard } = storeToRefs(store)
 <template>
    <header>
       <h1>{{ currentBoard?.title }}</h1>
-      <CustomButton>add new task</CustomButton>
+      <DefaultButton>add new task</DefaultButton>
    </header>
 </template>
 

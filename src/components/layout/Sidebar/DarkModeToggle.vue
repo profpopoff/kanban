@@ -2,7 +2,7 @@
 import { useDark, useToggle } from '@vueuse/core'
 import SunIcon from '../../icons/SunIcon.vue'
 import MoonIcon from '../../icons/MoonIcon.vue'
-import CustomToggle from '../../ui/CustomToggle.vue'
+import DefaultToggle from '../../ui/DefaultToggle.vue'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -10,9 +10,9 @@ const toggleDark = useToggle(isDark)
 
 <template>
    <div class="dark-mode-toggle">
-      <SunIcon class="icon" @click="isDark = false" />
-      <CustomToggle class="toggle" @change="toggleDark()" :isChecked="isDark" />
-      <MoonIcon class="icon" @click="isDark = true" />
+      <SunIcon class="icon" @click="toggleDark()" />
+      <DefaultToggle class="toggle" @change="toggleDark()" :isChecked="isDark" />
+      <MoonIcon class="icon" @click="toggleDark()" />
    </div>
 </template>
 
