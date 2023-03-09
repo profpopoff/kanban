@@ -1,10 +1,10 @@
 import { defineStore } from "pinia"
 import { computed, ref } from "vue"
 
-export const useBoardsStore = defineStore('counter', () => {
+export const useBoardsStore = defineStore('boards', () => {
     const boards = ref([{
         id: new Date().valueOf(),
-        title: 'learn kanban',
+        title: 'learn to use kanban',
         boardIconId: 3,
         columns: [
             {
