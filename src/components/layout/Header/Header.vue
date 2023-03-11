@@ -1,16 +1,25 @@
 <script setup lang="ts">
-import DefaultButton from '../../ui/DefaultButton.vue'
+import { ref } from 'vue'
 import { useBoardsStore } from '../../../stores/boards'
 import { storeToRefs } from 'pinia'
+import DefaultButton from '../../ui/DefaultButton.vue'
+import Modal from '../../ui/Modal.vue'
+import CreateTask from './CreateTask.vue'
 
 const store = useBoardsStore()
 const { currentBoard } = storeToRefs(store)
+
+const addTaskActive = ref(false)
+const toggleAddTaskModal = () => addTaskActive.value = !addTaskActive.value
 </script>
 
 <template>
    <header>
       <h1>{{ currentBoard?.title }}</h1>
-      <DefaultButton>add new task</DefaultButton>
+      <DefaultButton @click="toggleAddTaskModal">add new task</DefaultButton>
+      <Modal v-model:isActive="addTaskActive">
+         <CreateTask />
+      </Modal>
    </header>
 </template>
 
