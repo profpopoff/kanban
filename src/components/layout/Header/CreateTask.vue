@@ -1,45 +1,62 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useBoardsStore } from '../../../stores/boards'
-import DefaultButton from '../../ui/DefaultButton.vue'
-import DefaultInput from '../../ui/DefaultInput.vue'
-import Dropdown from '../../ui/Dropdown.vue'
+import { ref } from "vue";
+import { storeToRefs } from "pinia";
+import { useBoardsStore } from "../../../stores/boards";
+import DefaultButton from "../../ui/DefaultButton.vue";
+import DefaultInput from "../../ui/DefaultInput.vue";
+import Dropdown from "../../ui/Dropdown.vue";
 
-const store = useBoardsStore()
-const { currentBoard } = storeToRefs(store)
+const store = useBoardsStore();
+const { currentBoard } = storeToRefs(store);
 
-const newTask = ref({ id: '', title: '', status: currentBoard.value!.columns[0].title })
+const newTask = ref({
+  id: "",
+  title: "",
+  status: currentBoard.value!.columns[0].title,
+});
+
+const submit = () => {
+  console.log(newTask.value.title, newTask.value.status);
+};
 </script>
 
 <template>
-   <div class="add-task">
-      <h3>Add new task</h3>
-      <div class="inputs">
-         <DefaultInput v-model:value="newTask.title" label="title" placeholder="e.g. Take coffee break" />
-         <Dropdown :options="currentBoard ? currentBoard.columns.map(column => column.title) : []"
-            v-model:selected="newTask.status" />
-      </div>
-      <DefaultButton>Add task</DefaultButton>
-   </div>
+  <div class="add-task">
+    <h3>Add new task</h3>
+    <div class="inputs">
+      <DefaultInput
+        v-model:value="newTask.title"
+        label="title"
+        placeholder="e.g. Take coffee break"
+      />
+      <Dropdown
+        :options="
+          currentBoard ? currentBoard.columns.map((column) => column.title) : []
+        "
+        v-model:selected="newTask.status"
+        label="status"
+      />
+    </div>
+    <DefaultButton @click="submit">Add task</DefaultButton>
+  </div>
 </template>
 
 <style scoped lang="scss">
 .add-task {
-   display: flex;
-   flex-direction: column;
-   gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 
-   h3 {
-      text-transform: capitalize;
-      line-height: 1;
-   }
+  h3 {
+    text-transform: capitalize;
+    line-height: 1;
+  }
 
-   .inputs {
-      padding-inline: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-   }
+  .inputs {
+    padding-inline: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }
 </style>
