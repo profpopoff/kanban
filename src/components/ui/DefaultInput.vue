@@ -10,14 +10,17 @@ defineProps({
     label: {
         type: String,
     },
+    id: {
+        type: String,
+    },
 });
 defineEmits(["update:value"]);
 </script>
 
 <template>
     <div class="default-input">
-        <label :for="label">{{ label }}</label>
-        <input :id="label" :value="value" @input="$emit('update:value', ($event.target as HTMLInputElement).value)"
+        <label :for="id">{{ label }}</label>
+        <input :id="id" :value="value" @input="$emit('update:value', ($event.target as HTMLInputElement).value)"
             :placeholder="placeholder" />
     </div>
 </template>

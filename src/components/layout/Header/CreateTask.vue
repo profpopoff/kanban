@@ -24,18 +24,10 @@ const submit = () => {
   <div class="add-task">
     <h3>Add new task</h3>
     <div class="inputs">
-      <DefaultInput
-        v-model:value="newTask.title"
-        label="title"
-        placeholder="e.g. Take coffee break"
-      />
-      <Dropdown
-        :options="
-          currentBoard ? currentBoard.columns.map((column) => column.title) : []
-        "
-        v-model:selected="newTask.status"
-        label="status"
-      />
+      <DefaultInput v-model:value="newTask.title" label="title" id="create-task-id"
+        placeholder="e.g. Take coffee break" />
+      <Dropdown :options="currentBoard ? currentBoard.columns.map((column) => column.title) : []
+        " v-model:selected="newTask.status" label="status" />
     </div>
     <DefaultButton @click="submit">Add task</DefaultButton>
   </div>
