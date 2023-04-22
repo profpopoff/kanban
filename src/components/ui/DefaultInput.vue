@@ -10,8 +10,8 @@ defineProps({
     label: {
         type: String,
     },
-})
-defineEmits(['update:value'])
+});
+defineEmits(["update:value"]);
 </script>
 
 <template>
@@ -21,16 +21,17 @@ defineEmits(['update:value'])
             :placeholder="placeholder" />
     </div>
 </template>
- 
+
 <style scoped lang="scss">
 .default-input {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
 
     label {
+        width: fit-content;
         text-transform: capitalize;
-        font-size: .8rem;
+        font-size: 0.8rem;
         font-weight: 600;
         line-height: 1;
 
@@ -44,14 +45,14 @@ defineEmits(['update:value'])
         width: 100%;
         padding-inline: 1rem;
         background-color: hsl(var(--element-color));
-        border-radius: .25rem;
+        border-radius: 0.25rem;
         border: 1px solid hsl(var(--grey-color));
         outline: none;
 
         &::placeholder {
             color: hsl(var(--grey-color));
             opacity: 1;
-            font-size: .8rem;
+            font-size: 0.8rem;
         }
     }
 }
