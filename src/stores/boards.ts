@@ -1,28 +1,6 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
-
-export interface Board {
-  id: number;
-  title: string;
-  boardIconId: number;
-  columns: Column[];
-}
-
-type Column = {
-  title: string;
-  tasks: Task[];
-};
-
-type Task = {
-  title: string;
-  description: string;
-  subtasks: Subtask[];
-};
-
-type Subtask = {
-  title: string;
-  isDone: boolean;
-};
+import Board from "../types/Board";
 
 export const useBoardsStore = defineStore("boards", () => {
   const boards = ref<Board[]>([
