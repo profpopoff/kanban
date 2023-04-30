@@ -30,6 +30,7 @@ const submit = () => {
         placeholder="e.g. Take coffee break" />
       <DefaultTextarea v-model:value="newTask.description" label="description" id="create-task-description"
         placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little." />
+      <DefaultButton reverse-colors>Add new subtask</DefaultButton>
       <Dropdown :options="currentBoard ? currentBoard.columns.map((column) => column.title) : []
         " v-model:selected="newTask.status" label="status" />
     </div>
@@ -55,4 +56,4 @@ const submit = () => {
     gap: 1.5rem;
   }
 }
-</style>
+</style> 

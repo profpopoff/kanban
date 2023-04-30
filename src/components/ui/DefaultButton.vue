@@ -1,5 +1,13 @@
+<script setup lang="ts">
+defineProps({
+   reverseColors: {
+      type: Boolean,
+   },
+});
+</script>
+
 <template>
-   <button class="custom-button">
+   <button class="custom-button" :class="{ 'reverse-colors': reverseColors }">
       <slot />
    </button>
 </template>
@@ -12,11 +20,16 @@
    border: none;
    background-color: hsl(var(--accent-color));
    color: #fff;
-   font-size: .9rem;
+   font-size: 0.9rem;
    font-weight: 600;
    text-transform: capitalize;
    line-height: 1;
    cursor: pointer;
+
+   &.reverse-colors {
+      color: hsl(var(--accent-color));
+      background-color: #fff;
+   }
 
    &:empty {
       display: none;
