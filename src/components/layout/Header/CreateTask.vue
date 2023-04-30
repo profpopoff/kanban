@@ -6,14 +6,16 @@ import DefaultButton from "../../ui/DefaultButton.vue";
 import DefaultInput from "../../ui/DefaultInput.vue";
 import Dropdown from "../../ui/Dropdown.vue";
 import DefaultTextarea from "../../ui/DefaultTextarea.vue";
+import { Task } from "../../../types/Board";
 
 const store = useBoardsStore();
 const { currentBoard } = storeToRefs(store);
 
-const newTask = ref({
+const newTask = ref<Task>({
   id: "",
   title: "",
   description: "",
+  subtasks: [{ id: Date.now().toString(), title: "", isDone: false }],
   status: currentBoard.value!.columns[0].title,
 });
 
@@ -25,7 +27,7 @@ const submit = () => {
 <template>
   <div class="add-task">
     <h3>Add new task</h3>
-    <div class="inputs">
+    <div class="inputs-container">
       <DefaultInput v-model:value="newTask.title" label="title" id="create-task-title"
         placeholder="e.g. Take coffee break" />
       <DefaultTextarea v-model:value="newTask.description" label="description" id="create-task-description"
@@ -49,11 +51,11 @@ const submit = () => {
     line-height: 1;
   }
 
-  .inputs {
+  .inputs-container {
     padding-inline: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
 }
-</style> 
+</style>
