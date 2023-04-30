@@ -12,15 +12,37 @@ const store = useBoardsStore();
 const { currentBoard } = storeToRefs(store);
 
 const newTask = ref<Task>({
-  id: "",
+  id: Date.now().toString(),
   title: "",
   description: "",
-  subtasks: [{ id: Date.now().toString(), title: "", isDone: false }],
+  subtasks: [
+    { id: Date.now().toString(), title: "", isDone: false },
+    { id: (Date.now() + 1).toString(), title: "", isDone: false },
+  ],
   status: currentBoard.value!.columns[0].title,
 });
 
+const createSubtask = () => {
+  newTask.value = {
+    ...newTask.value,
+    subtasks: [
+      ...newTask.value.subtasks,
+      { id: Date.now().toString(), title: "", isDone: false },
+    ],
+  };
+};
+
+const deleteSubtask = (idToDelete: string) => {
+  newTask.value = {
+    ...newTask.value,
+    subtasks: newTask.value.subtasks.filter(
+      (subtask) => subtask.id !== idToDelete
+    ),
+  };
+};
+
 const submit = () => {
-  console.log(newTask.value);
+  console.log(newTask.value.subtasks.map((subtask) => subtask.id));
 };
 </script>
 
@@ -32,7 +54,19 @@ const submit = () => {
         placeholder="e.g. Take coffee break" />
       <DefaultTextarea v-model:value="newTask.description" label="description" id="create-task-description"
         placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little." />
-      <DefaultButton reverse-colors>Add new subtask</DefaultButton>
+      <div class="subtasks">
+        <label :for="`subtask-${newTask?.subtasks?.at(0)?.id}`">subtasks</label>
+        <div class="subtasks-inputs">
+          <div class="subtask" v-for="subtask in newTask.subtasks">
+            <DefaultInput v-model:value="subtask.title" :id="`subtask-${subtask.id}`" />
+            <button v-if="newTask.subtasks.length > 1" @click="deleteSubtask(subtask.id)">
+              delete
+            </button>
+          </div>
+        </div>
+        <DefaultButton @click="createSubtask" id="subtask-create" reverse-colors class="add-subtask-btn">Add new subtask
+        </DefaultButton>
+      </div>
       <Dropdown :options="currentBoard ? currentBoard.columns.map((column) => column.title) : []
         " v-model:selected="newTask.status" label="status" />
     </div>
@@ -56,6 +90,43 @@ const submit = () => {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    .subtasks {
+      display: flex;
+      flex-direction: column;
+
+      &-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .subtask {
+          display: flex;
+
+          &>*:first-child {
+            flex: 1;
+          }
+        }
+      }
+
+      .add-subtask-btn {
+        margin-top: 0.75rem;
+      }
+    }
+  }
+
+  label {
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+
+    &:empty {
+      display: none;
+    }
   }
 }
 </style>
