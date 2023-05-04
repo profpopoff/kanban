@@ -1,13 +1,10 @@
 <script setup lang="ts">
-defineProps({
-   reverseColors: {
-      type: Boolean,
-   },
-});
+type ButtonType = "default" | "outlined"
+defineProps<{ type?: ButtonType }>();
 </script>
 
 <template>
-   <button class="custom-button" :class="{ 'reverse-colors': reverseColors }">
+   <button class="custom-button" :class="type">
       <slot />
    </button>
 </template>
@@ -21,14 +18,15 @@ defineProps({
    background-color: hsl(var(--accent-color));
    color: #fff;
    font-size: 0.9rem;
-   font-weight: 600;
+   font-weight: 700;
    text-transform: capitalize;
    line-height: 1;
    cursor: pointer;
 
-   &.reverse-colors {
+   &.outlined {
       color: hsl(var(--accent-color));
-      background-color: #fff;
+      background-color: transparent;
+      outline: 2px solid hsl(var(--accent-color));
    }
 
    &:empty {

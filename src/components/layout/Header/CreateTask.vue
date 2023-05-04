@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
 import { useBoardsStore } from "../../../stores/boards";
-import DefaultButton from "../../ui/DefaultButton.vue";
+import CustomButton from "../../ui/CustomButton.vue";
 import DefaultInput from "../../ui/DefaultInput.vue";
 import Dropdown from "../../ui/Dropdown.vue";
 import DefaultTextarea from "../../ui/DefaultTextarea.vue";
@@ -81,13 +81,14 @@ const submit = () => {
             </button>
           </div>
         </div>
-        <DefaultButton @click="createSubtask" id="subtask-create" reverse-colors class="add-subtask-btn">Add new subtask
-        </DefaultButton>
+        <CustomButton @click="createSubtask" id="subtask-create" type="outlined" class="add-subtask-btn">Add
+          new subtask
+        </CustomButton>
       </div>
       <Dropdown :options="currentBoard ? currentBoard.columns.map((column) => column.title) : []
         " v-model:selected="newTask.status" label="status" />
     </div>
-    <DefaultButton @click="submit">Add task</DefaultButton>
+    <CustomButton @click="submit">Add task</CustomButton>
   </div>
 </template>
 

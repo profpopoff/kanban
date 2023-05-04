@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useBoardsStore } from '../../../stores/boards'
 import { storeToRefs } from 'pinia'
-import DefaultButton from '../../ui/DefaultButton.vue'
+import CustomButton from '../../ui/CustomButton.vue'
 import Modal from '../../ui/Modal.vue'
 import CreateTask from './CreateTask.vue'
 
@@ -16,7 +16,7 @@ const toggleAddTaskModal = () => addTaskActive.value = !addTaskActive.value
 <template>
    <header>
       <h1>{{ currentBoard?.title }}</h1>
-      <DefaultButton @click="toggleAddTaskModal">add new task</DefaultButton>
+      <CustomButton @click="toggleAddTaskModal">add new task</CustomButton>
       <Modal v-model:isActive="addTaskActive">
          <CreateTask />
       </Modal>
