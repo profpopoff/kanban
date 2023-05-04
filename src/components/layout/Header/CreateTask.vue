@@ -22,6 +22,20 @@ const newTask = ref<Task>({
   status: currentBoard.value!.columns[0].title,
 });
 
+const subtaskPlaceholders = [
+  "e.g. Make coffee",
+  "e.g. Drink coffee",
+  "e.g. Smile",
+  "e.g. Go for a walk",
+  "How many more subtasks do you need?",
+  "Sheesh! Are you building a reactor?",
+  "Stop, please.",
+  "Does it still fit?",
+  "No way!",
+  "What kind of monitor is this?",
+  "I give up",
+];
+
 const createSubtask = () => {
   newTask.value = {
     ...newTask.value,
@@ -57,8 +71,11 @@ const submit = () => {
       <div class="subtasks">
         <label :for="`subtask-${newTask?.subtasks?.at(0)?.id}`">subtasks</label>
         <div class="subtasks-inputs">
-          <div class="subtask" v-for="subtask in newTask.subtasks">
-            <DefaultInput v-model:value="subtask.title" :id="`subtask-${subtask.id}`" />
+          <div class="subtask" v-for="(subtask, index) in newTask.subtasks" :key="subtask.id">
+            <DefaultInput v-model:value="subtask.title" :id="`subtask-${subtask.id}`" :placeholder="`${index < subtaskPlaceholders.length
+                ? subtaskPlaceholders.at(index)
+                : subtaskPlaceholders.at(-1)
+              }`" />
             <button v-if="newTask.subtasks.length > 1" @click="deleteSubtask(subtask.id)">
               delete
             </button>
