@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import Header from './components/layout/Header/Header.vue'
-import Sidebar from './components/layout/Sidebar/Sidebar.vue'
-import Board from './components/layout/Board/Board.vue'
 </script>
 
 <template>
   <div class="container">
-    <Header />
-    <Sidebar />
-    <main>
-      <Board />
-    </main>
+    hello world
   </div>
 </template>
 
