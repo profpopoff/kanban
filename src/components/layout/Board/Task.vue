@@ -1,19 +1,14 @@
 <script setup lang="ts">
-defineProps({
-   task: {
-      type: Object,
-      required: true
-   }
-})
+import { Subtask, Task } from '../../../types/Board';
 
-interface subtask { title: string, isDone: boolean }
+defineProps<{ task: Task }>()
 
 </script>
 
 <template>
    <li class="task">
       <h3>{{ task.title }}</h3>
-      <p>{{ task.subtasks.filter((subtask: subtask) => subtask.isDone).length }} of {{
+      <p>{{ task.subtasks.filter((subtask: Subtask) => subtask.isDone).length }} of {{
          task.subtasks.length }} subtasks</p>
    </li>
 </template>

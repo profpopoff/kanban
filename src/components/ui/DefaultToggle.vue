@@ -1,14 +1,8 @@
 <script setup lang="ts">
-const props = defineProps({
-   isChecked: {
-      type: Boolean,
-      default: false,
-   },
-   name: {
-      type: String,
-      default: 'toggle'
-   }
-})
+const { isChecked = false, name = "toggle" } = defineProps<{
+   isChecked?: boolean, // false
+   name?: string // toggle
+}>()
 </script>
 
 <template>

@@ -3,19 +3,11 @@ import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import ArrowIcon from "../icons/ArrowIcon.vue";
 
-defineProps({
-   options: {
-      type: Array,
-      required: true,
-   },
-   selected: {
-      type: String,
-      required: true,
-   },
-   label: {
-      type: String,
-   },
-});
+defineProps<{
+   options: any[];
+   selected: string;
+   label?: string;
+}>();
 
 defineEmits(["update:selected"]);
 
@@ -35,12 +27,11 @@ onClickOutside(dropdown, () => (isOpen.value = false));
          </button>
          <transition name="options">
             <ul class="options" v-show="isOpen">
-               <li class="option" v-for="(option, i) of 
-   options.filter(
-         (option) => option !== selected
-      )
-" :key="i">
-                  <button @click="$emit('update:selected', option);
+               <li class="option" v-for="(option, i) of options.filter(
+                  (option) => option !== selected
+               )" :key="i">
+                  <button @click="
+                     $emit('update:selected', option);
                   isOpen = false;
                   ">
                      {{ option }}
@@ -162,4 +153,4 @@ onClickOutside(dropdown, () => (isOpen.value = false));
       }
    }
 }
-</style>
+</style> 

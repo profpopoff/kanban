@@ -1,19 +1,10 @@
 <script setup lang="ts">
-defineProps({
-    value: {
-        type: String,
-        required: true,
-    },
-    placeholder: {
-        type: String,
-    },
-    label: {
-        type: String,
-    },
-    id: {
-        type: String,
-    },
-});
+defineProps<{
+    value: string;
+    placeholder?: string;
+    label?: string;
+    id?: string;
+}>();
 defineEmits(["update:value"]);
 </script>
 

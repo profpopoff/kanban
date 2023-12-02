@@ -7,52 +7,33 @@ import DefaultInput from "../../ui/DefaultInput.vue";
 import Dropdown from "../../ui/Dropdown.vue";
 import DefaultTextarea from "../../ui/DefaultTextarea.vue";
 import { Task } from "../../../types/Board";
+import { subtaskPlaceholders } from "../../../libs/subtaskPlaceholders"
 
 const store = useBoardsStore();
 const { currentBoard } = storeToRefs(store);
 
 const newTask = ref<Task>({
-  id: Date.now().toString(),
+  id: `T-${Date.now()}`,
   title: "",
   description: "",
   subtasks: [
-    { id: Date.now().toString(), title: "", isDone: false },
-    { id: (Date.now() + 1).toString(), title: "", isDone: false },
+    { id: `ST-${Date.now()}`, title: "", isDone: false },
+    { id: `ST-${Date.now() + 1}`, title: "", isDone: false },
   ],
   status: currentBoard.value!.columns[0].title,
 });
 
-const subtaskPlaceholders = [
-  "e.g. Make coffee",
-  "e.g. Drink coffee",
-  "e.g. Smile",
-  "e.g. Go for a walk",
-  "How many more subtasks do you need?",
-  "Sheesh! Are you building a reactor?",
-  "Stop, please.",
-  "Does it still fit?",
-  "No way!",
-  "What kind of monitor is this?",
-  "I give up",
-];
-
 const createSubtask = () => {
-  newTask.value = {
-    ...newTask.value,
-    subtasks: [
-      ...newTask.value.subtasks,
-      { id: Date.now().toString(), title: "", isDone: false },
-    ],
-  };
+  newTask.value.subtasks = [
+    ...newTask.value.subtasks,
+    { id: `ST-${Date.now()}`, title: "", isDone: false },
+  ]
 };
 
 const deleteSubtask = (idToDelete: string) => {
-  newTask.value = {
-    ...newTask.value,
-    subtasks: newTask.value.subtasks.filter(
-      (subtask) => subtask.id !== idToDelete
-    ),
-  };
+  newTask.value.subtasks = newTask.value.subtasks.filter(
+    (subtask) => subtask.id !== idToDelete
+  )
 };
 
 const submit = () => {
@@ -72,10 +53,8 @@ const submit = () => {
         <label :for="`subtask-${newTask?.subtasks?.at(0)?.id}`">subtasks</label>
         <div class="subtasks-inputs">
           <div class="subtask" v-for="(subtask, index) in newTask.subtasks" :key="subtask.id">
-            <DefaultInput v-model:value="subtask.title" :id="`subtask-${subtask.id}`" :placeholder="`${index < subtaskPlaceholders.length
-                ? subtaskPlaceholders.at(index)
-                : subtaskPlaceholders.at(-1)
-              }`" />
+            <DefaultInput v-model:value="subtask.title" :id="`subtask-${subtask.id}`"
+              :placeholder="`${subtaskPlaceholders.at(index) || ''}`" />
             <button v-if="newTask.subtasks.length > 1" @click="deleteSubtask(subtask.id)">
               delete
             </button>

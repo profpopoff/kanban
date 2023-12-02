@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { onClickOutside } from '@vueuse/core'
+import { ref } from "vue";
+import { onClickOutside } from "@vueuse/core";
 
-defineProps({
-   isActive: {
-      type: Boolean,
-      required: true,
-   }
-})
-const emit = defineEmits(['update:isActive'])
+defineProps<{
+   isActive: boolean;
+}>();
+const emit = defineEmits(["update:isActive"]);
 
-const content = ref(null)
-onClickOutside(content, () => emit('update:isActive', false))
+const content = ref(null);
+onClickOutside(content, () => emit("update:isActive", false));
 </script>
 
 <template>
@@ -66,7 +63,7 @@ onClickOutside(content, () => emit('update:isActive', false))
       width: 30rem;
       padding: 2rem 2rem;
       background-color: hsl(var(--element-color));
-      border-radius: .5rem;
+      border-radius: 0.5rem;
    }
 }
 </style>
