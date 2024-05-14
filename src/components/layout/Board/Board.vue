@@ -29,6 +29,8 @@ import Columns from "./Columns.vue";
     color: hsl(var(--grey-color));
     text-transform: capitalize;
     cursor: pointer;
+
+    transition: var(--dark-theme-transition);
   }
 }
 </style>
