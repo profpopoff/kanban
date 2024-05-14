@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Header from './components/layout/Header/Header.vue'
-import Sidebar from './components/layout/Sidebar/Sidebar.vue'
-import Board from './components/layout/Board/Board.vue'
+import Header from "./components/layout/Header/Header.vue";
+import Sidebar from "./components/layout/Sidebar/Sidebar.vue";
+import Board from "./components/layout/Board/Board.vue";
 </script>
 
 <template>
@@ -22,8 +22,8 @@ import Board from './components/layout/Board/Board.vue'
   grid-template-columns: 18.75rem 1fr;
   grid-template-rows: 6rem 1fr;
   grid-template-areas:
-    'sidebar header'
-    'sidebar main';
+    "sidebar header"
+    "sidebar main";
 
   main {
     grid-area: main;
