@@ -1,17 +1,30 @@
 <script setup lang="ts">
-import { Subtask, Task } from "../../../types/Board";
+import { ref } from "vue";
+import Modal from "../../ui/Modal.vue";
+import { Task } from "../../../types/Board";
+import CustomButton from "../../ui/CustomButton.vue";
+import TaskInfoModal from "./TaskInfoModal.vue";
 
 const { task } = defineProps<{ task: Task }>();
 const { subtasks } = task;
+
+const isTaskInfoActive = ref(false);
+const toggleTaskInfoModal = () =>
+  (isTaskInfoActive.value = !isTaskInfoActive.value);
 </script>
 
 <template>
   <li class="task">
-    <h3>{{ task.title }}</h3>
+    <CustomButton type="text" @click="toggleTaskInfoModal">{{
+      task.title
+    }}</CustomButton>
     <p>
       {{ subtasks.filter(({ isDone }) => isDone).length }} of
       {{ subtasks.length }} subtasks
     </p>
+    <Modal v-model:isActive="isTaskInfoActive">
+      <TaskInfoModal :task="task" />
+    </Modal>
   </li>
 </template>
 
@@ -27,14 +40,14 @@ const { subtasks } = task;
 
   transition: var(--dark-theme-transition);
 
-  h3 {
+  button {
+    text-align: left;
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.3;
-
-    &:first-letter {
-      text-transform: uppercase;
-    }
+    border: none;
+    background-color: hsl(var(--element-color));
+    cursor: pointer;
   }
 
   p {

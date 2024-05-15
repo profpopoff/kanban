@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type ButtonType = "default" | "outlined";
+type ButtonType = "default" | "outlined" | "text";
 defineProps<{ type?: ButtonType }>();
 </script>
 
@@ -19,15 +19,32 @@ defineProps<{ type?: ButtonType }>();
   color: #fff;
   font-size: 0.9rem;
   font-weight: 700;
-  text-transform: capitalize;
   line-height: 1;
   cursor: pointer;
+  transition: var(--dark-theme-transition);
+
+  &:not(.text) {
+    text-transform: capitalize;
+  }
 
   &.outlined {
     font-weight: 400;
     color: hsl(var(--text-color));
     background-color: transparent;
     outline: 1px solid hsl(var(--text-color));
+  }
+
+  &.text {
+    height: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    text-align: left;
+    color: hsl(var(--text-color));
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
 
   &:empty {

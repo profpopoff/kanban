@@ -87,7 +87,7 @@ const submit = () => {
         </CustomButton>
       </div>
       <Dropdown
-        :options="currentBoard?.columns?.map(({ title }) => title)"
+        :options="currentBoard?.columns?.map(({ title }) => title) ?? []"
         v-model:selected="newTask.status"
         label="status"
       />
