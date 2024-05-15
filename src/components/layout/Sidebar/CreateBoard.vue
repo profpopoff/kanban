@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import CustomButton from "../../ui/CustomButton.vue";
-import DefaultInput from "../../ui/DefaultInput.vue";
+import ButtonCustom from "../../ui/ButtonCustom.vue";
+import InputCustom from "../../ui/InputCustom.vue";
 
 const newBoard = ref({ id: "", title: "" });
 </script>
@@ -10,10 +10,10 @@ const newBoard = ref({ id: "", title: "" });
    <div class="create-board">
       <h3>Create new board</h3>
       <div class="inputs">
-         <DefaultInput v-model:value="newBoard.title" label="title" id="create-board-id"
+         <InputCustom v-model:value="newBoard.title" label="title" id="create-board-id"
             placeholder="e.g. Marketing plan" />
       </div>
-      <CustomButton>Create board</CustomButton>
+      <ButtonCustom>Create board</ButtonCustom>
    </div>
 </template>
 

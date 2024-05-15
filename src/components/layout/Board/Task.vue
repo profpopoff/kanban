@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, toRefs } from "vue";
 import Modal from "../../ui/Modal.vue";
 import { Task } from "../../../types/Board";
-import CustomButton from "../../ui/CustomButton.vue";
+import ButtonCustom from "../../ui/ButtonCustom.vue";
 import TaskInfoModal from "./TaskInfoModal.vue";
 
 const { task } = defineProps<{ task: Task }>();
-const { subtasks } = task;
+const { subtasks } = toRefs(task);
 
 const isTaskInfoActive = ref(false);
 const toggleTaskInfoModal = () =>
@@ -15,9 +15,9 @@ const toggleTaskInfoModal = () =>
 
 <template>
   <li class="task">
-    <CustomButton type="text" @click="toggleTaskInfoModal">{{
+    <ButtonCustom type="text" @click="toggleTaskInfoModal">{{
       task.title
-    }}</CustomButton>
+    }}</ButtonCustom>
     <p>
       {{ subtasks.filter(({ isDone }) => isDone).length }} of
       {{ subtasks.length }} subtasks

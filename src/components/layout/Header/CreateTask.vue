@@ -2,10 +2,10 @@
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
 import { useBoardsStore } from "../../../stores/boards";
-import CustomButton from "../../ui/CustomButton.vue";
-import DefaultInput from "../../ui/DefaultInput.vue";
+import ButtonCustom from "../../ui/ButtonCustom.vue";
+import InputCustom from "../../ui/InputCustom.vue";
 import Dropdown from "../../ui/Dropdown.vue";
-import DefaultTextarea from "../../ui/DefaultTextarea.vue";
+import TextAreaCustom from "../../ui/TextAreaCustom.vue";
 import { Task } from "../../../types/Board";
 import { subtaskPlaceholders } from "../../../libs/subtaskPlaceholders";
 
@@ -45,13 +45,13 @@ const submit = () => {
   <div class="add-task">
     <h3>Add new task</h3>
     <div class="inputs-container">
-      <DefaultInput
+      <InputCustom
         v-model:value="newTask.title"
         label="title"
         id="create-task-title"
         placeholder="e.g. Take coffee break"
       />
-      <DefaultTextarea
+      <TextAreaCustom
         v-model:value="newTask.description"
         label="description"
         id="create-task-description"
@@ -65,7 +65,7 @@ const submit = () => {
             v-for="(subtask, index) in newTask.subtasks"
             :key="subtask.id"
           >
-            <DefaultInput
+            <InputCustom
               v-model:value="subtask.title"
               :id="`subtask-${subtask.id}`"
               :placeholder="`${subtaskPlaceholders.at(index) || ''}`"
@@ -78,13 +78,13 @@ const submit = () => {
             </button>
           </div>
         </div>
-        <CustomButton
+        <ButtonCustom
           @click="createSubtask"
           id="subtask-create"
           type="outlined"
           class="add-subtask-btn"
           >Add new subtask
-        </CustomButton>
+        </ButtonCustom>
       </div>
       <Dropdown
         :options="currentBoard?.columns?.map(({ title }) => title) ?? []"
@@ -92,7 +92,7 @@ const submit = () => {
         label="status"
       />
     </div>
-    <CustomButton @click="submit">Add task</CustomButton>
+    <ButtonCustom @click="submit">Add task</ButtonCustom>
   </div>
 </template>
 

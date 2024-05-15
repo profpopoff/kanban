@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, toRefs } from "vue";
 import { Task } from "../../../types/Board";
-import DefaultToggle from "../../ui/DefaultToggle.vue";
+import CheckboxCustom from "../../ui/CheckboxCustom.vue";
 
 const { task } = defineProps<{ task: Task }>();
 const { subtasks } = toRefs(task);
@@ -24,13 +24,13 @@ const handleSubtaskChange = (id: string) => {
       Subtasks ({{ subtasks.filter(({ isDone }) => isDone).length }} of
       {{ subtasks.length }})
     </h4>
-    <DefaultToggle
+    <CheckboxCustom
       class="toggle"
       v-for="{ id, title, isDone } in subtasks"
       @on-change="handleSubtaskChange"
       :id="id"
       :isChecked="isDone"
-      >{{ title }}</DefaultToggle
+      >{{ title }}</CheckboxCustom
     >
   </div>
 </template>
