@@ -1,13 +1,16 @@
 <script setup lang="ts">
-const {
-  isChecked = false,
-  id = "id",
-  type = "checkbox",
-} = defineProps<{
-  isChecked?: boolean;
-  id?: string;
-  type?: "checkbox" | "toggle";
-}>();
+const { id } = withDefaults(
+  defineProps<{
+    isChecked?: boolean;
+    id?: string;
+    type?: "checkbox" | "toggle";
+  }>(),
+  {
+    isChecked: false,
+    id: "id",
+    type: "checkbox",
+  }
+);
 const emit = defineEmits<{
   onChange: [id: string];
 }>();
@@ -44,17 +47,29 @@ const handleClick = () => {
     $padding: 0.3em;
     $defaultColor: hsl(var(--default-color, var(--grey-color)));
     $checkedColor: hsl(var(--checked-color, var(--accent-color)));
+    cursor: pointer;
+
+    &.checkbox {
+      width: $height;
+      aspect-ratio: 1;
+      accent-color: $checkedColor;
+      transition: all 0.25s linear;
+
+      &:checked + label {
+        text-decoration: line-through;
+      }
+    }
 
     &.toggle {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
       position: relative;
       height: $height;
       width: calc($height * 2);
       background: $defaultColor;
       border-radius: $height;
-      cursor: pointer;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
       transition: all 0.3s ease-in-out;
 
       &::after {
