@@ -43,24 +43,25 @@ const handleClick = () => {
   gap: 0.5em;
 
   input {
-    $height: 1.5em;
     $padding: 0.3em;
     $defaultColor: hsl(var(--default-color, var(--grey-color)));
     $checkedColor: hsl(var(--checked-color, var(--accent-color)));
     cursor: pointer;
 
     &.checkbox {
-      width: $height;
+      width: 1.2rem;
       aspect-ratio: 1;
       accent-color: $checkedColor;
       transition: all 0.25s linear;
 
       &:checked + label {
         text-decoration: line-through;
+        opacity: 0.7;
       }
     }
 
     &.toggle {
+      $height: 1.5em;
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -104,6 +105,11 @@ const handleClick = () => {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    font-weight: 500;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
 
     &:empty {
       display: none;

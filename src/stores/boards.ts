@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
-import Board from "../types/Board";
+import type Board from "../types/Board";
 
 export const useBoardsStore = defineStore("boards", () => {
   const boards = ref<Board[]>([

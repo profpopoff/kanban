@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, toRefs } from "vue";
 import Modal from "../../ui/Modal.vue";
-import { Task } from "../../../types/Board";
+import type { Task } from "../../../types/Board";
 import ButtonCustom from "../../ui/ButtonCustom.vue";
 import TaskInfoModal from "./TaskInfoModal.vue";
 

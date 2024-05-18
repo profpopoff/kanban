@@ -6,7 +6,7 @@ import ButtonCustom from "../../ui/ButtonCustom.vue";
 import InputCustom from "../../ui/InputCustom.vue";
 import Dropdown from "../../ui/Dropdown.vue";
 import TextAreaCustom from "../../ui/TextAreaCustom.vue";
-import { Task } from "../../../types/Board";
+import type { Task } from "../../../types/Board";
 import { subtaskPlaceholders } from "../../../libs/subtaskPlaceholders";
 
 const store = useBoardsStore();
