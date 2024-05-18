@@ -2,9 +2,15 @@
 import { toRefs } from "vue";
 import type { Task } from "../../../types/Board";
 import CheckboxCustom from "../../ui/CheckboxCustom.vue";
+// import { useBoardsStore } from "../../../stores/boards";
+// import { storeToRefs } from "pinia";
+// import Dropdown from "../../ui/Dropdown.vue";
 
 const { task } = defineProps<{ task: Task }>();
-const { subtasks } = toRefs(task);
+const { subtasks /*status*/ } = toRefs(task);
+
+// const store = useBoardsStore();
+// const { currentBoard } = storeToRefs(store);
 
 const handleSubtaskChange = (id: string) => {
   const newSubtasksValue = subtasks.value.map((subtask) => ({
@@ -36,6 +42,11 @@ const handleSubtaskChange = (id: string) => {
         </CheckboxCustom>
       </div>
     </div>
+    <!-- <Dropdown
+      :options="currentBoard?.columns?.map(({ title }) => title) ?? []"
+      v-model:selected="status"
+      label="status"
+    /> -->
   </div>
 </template>
 
@@ -54,6 +65,10 @@ const handleSubtaskChange = (id: string) => {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+
+    h4 {
+      font-size: 0.9rem;
+    }
 
     .checkbox-wrapper {
       padding: 0.7rem 1rem;
