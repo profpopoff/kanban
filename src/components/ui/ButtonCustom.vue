@@ -39,6 +39,7 @@ defineProps<{ type?: ButtonType }>();
     padding: 0;
     background: none;
     border: none;
+    border-radius: 0;
     text-align: left;
     color: hsl(var(--text-color));
 

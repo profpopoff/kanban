@@ -8,6 +8,7 @@ import Dropdown from "../../ui/Dropdown.vue";
 import TextAreaCustom from "../../ui/TextAreaCustom.vue";
 import type { Task } from "../../../types/Board";
 import { subtaskPlaceholders } from "../../../libs/subtaskPlaceholders";
+import CloseIcon from "../../icons/CloseIcon.vue";
 
 const store = useBoardsStore();
 const { currentBoard } = storeToRefs(store);
@@ -70,12 +71,14 @@ const submit = () => {
               :id="`subtask-${subtask.id}`"
               :placeholder="`${subtaskPlaceholders.at(index) || ''}`"
             />
-            <button
+            <ButtonCustom
+              class="delete-button"
+              type="text"
               v-if="newTask.subtasks.length > 1"
               @click="deleteSubtask(subtask.id)"
             >
-              delete
-            </button>
+              <CloseIcon />
+            </ButtonCustom>
           </div>
         </div>
         <ButtonCustom
@@ -124,6 +127,15 @@ const submit = () => {
 
         .subtask {
           display: flex;
+          position: relative;
+
+          .delete-button {
+            position: absolute;
+            inset: 0 0 0 auto;
+            width: 2.5rem;
+            padding: 0.5rem;
+            opacity: 0.5;
+          }
 
           & > *:first-child {
             flex: 1;
