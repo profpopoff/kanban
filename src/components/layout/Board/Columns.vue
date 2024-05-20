@@ -16,7 +16,7 @@ const { currentBoard } = storeToRefs(store);
     >
       <div class="headline">
         <span></span>
-        <h2>{{ title }} ({{ tasks.length }})</h2>
+        <h2>{{ title }} ({{ tasks?.length ?? 0 }})</h2>
       </div>
       <ul class="tasks">
         <Task v-for="task in tasks" :key="task.id" :task="task" />

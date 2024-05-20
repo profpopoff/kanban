@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { storeToRefs } from "pinia";
-import { useBoardsStore } from "../../../stores/boards";
+// import { storeToRefs } from "pinia";
+// import { useBoardsStore } from "../../../stores/boards";
 import ButtonCustom from "../../ui/ButtonCustom.vue";
 import InputCustom from "../../ui/InputCustom.vue";
-import Dropdown from "../../ui/Dropdown.vue";
+// import Dropdown from "../../ui/Dropdown.vue";
 import TextAreaCustom from "../../ui/TextAreaCustom.vue";
 import type { Task } from "../../../types/Board";
 import { subtaskPlaceholders } from "../../../libs/subtaskPlaceholders";
 import CloseIcon from "../../icons/CloseIcon.vue";
 
-const store = useBoardsStore();
-const { currentBoard } = storeToRefs(store);
+// const store = useBoardsStore();
+// const { currentBoard } = storeToRefs(store);
 
 const newTask = ref<Task>({
   id: `T-${Date.now()}`,
@@ -21,7 +21,7 @@ const newTask = ref<Task>({
     { id: `ST-${Date.now()}`, title: "", isDone: false },
     { id: `ST-${Date.now() + 1}`, title: "", isDone: false },
   ],
-  status: currentBoard.value!.columns[0].title,
+  // status: currentBoard.value?.columns[0].title,
 });
 
 const createSubtask = () => {
@@ -89,11 +89,11 @@ const submit = () => {
           >Add new subtask
         </ButtonCustom>
       </div>
-      <Dropdown
+      <!-- <Dropdown
         :options="currentBoard?.columns?.map(({ title }) => title) ?? []"
         v-model:selected="newTask.status"
         label="status"
-      />
+      /> -->
     </div>
     <ButtonCustom @click="submit">Add task</ButtonCustom>
   </div>

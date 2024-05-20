@@ -34,7 +34,7 @@ const toggleCreateBoardModal = () =>
       <span>create new board</span>
     </button>
     <Modal v-model:isActive="createBoardActive">
-      <CreateBoard />
+      <CreateBoard @toggle-modal="toggleCreateBoardModal" />
     </Modal>
   </div>
 </template>

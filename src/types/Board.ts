@@ -8,7 +8,7 @@ export default interface Board {
 export type Column = {
    id: string;
    title: string;
-   tasks: Task[];
+   tasks?: Task[];
 };
 
 export type Task = {
