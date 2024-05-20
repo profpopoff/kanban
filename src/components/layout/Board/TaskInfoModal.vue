@@ -2,15 +2,9 @@
 import { toRefs } from "vue";
 import type { Task } from "../../../types/Board";
 import CheckboxCustom from "../../ui/CheckboxCustom.vue";
-// import { useBoardsStore } from "../../../stores/boards";
-// import { storeToRefs } from "pinia";
-// import Dropdown from "../../ui/Dropdown.vue";
 
 const { task } = defineProps<{ task: Task }>();
-const { subtasks /*status*/ } = toRefs(task);
-
-// const store = useBoardsStore();
-// const { currentBoard } = storeToRefs(store);
+const { subtasks  } = toRefs(task);
 
 const handleSubtaskChange = (id: string) => {
   const newSubtasksValue = subtasks.value.map((subtask) => ({
@@ -31,7 +25,11 @@ const handleSubtaskChange = (id: string) => {
         Subtasks ({{ subtasks.filter(({ isDone }) => isDone).length }} of
         {{ subtasks.length }})
       </h4>
-      <div class="checkbox-wrapper" v-for="{ id, title, isDone } in subtasks">
+      <div
+        class="checkbox-wrapper"
+        v-for="{ id, title, isDone } in subtasks"
+        :key="id"
+      >
         <CheckboxCustom
           class="toggle"
           @on-change="handleSubtaskChange"
@@ -42,11 +40,6 @@ const handleSubtaskChange = (id: string) => {
         </CheckboxCustom>
       </div>
     </div>
-    <!-- <Dropdown
-      :options="currentBoard?.columns?.map(({ title }) => title) ?? []"
-      v-model:selected="status"
-      label="status"
-    /> -->
   </div>
 </template>
 

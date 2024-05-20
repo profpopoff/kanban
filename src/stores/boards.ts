@@ -5,216 +5,224 @@ import type Board from "../types/Board";
 export const useBoardsStore = defineStore("boards", () => {
   const boards = ref<Board[]>([
     {
-      id: 'board-1',
-      title: "learn to use kanban",
+      id: "1",
+      title: "board-1",
       boardIconId: 3,
       columns: [
         {
-          id: 'column-1',
-          title: "todo",
+          id: "2",
+          title: "column-1-b1",
           tasks: [
             {
-              id: 'task-1',
-              title: "Build UI for onboard flow",
+              id: "3",
+              title: "task-1-c1-b1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'todo',
+              // status: "todo",
               subtasks: [
-                { id: 'subtask-1', title: "subtask 1", isDone: false },
-                { id: 'subtask-2', title: "subtask 2", isDone: false },
-                { id: 'subtask-3', title: "subtask 3", isDone: false },
+                { id: "4", title: "subtask-1-t1-c1-b1", isDone: false },
+                { id: "5", title: "subtask-2-t1-c1-b1", isDone: false },
+                { id: "6", title: "subtask-3-t1-c1-b1", isDone: false },
               ],
             },
             {
-              id: 'task-2',
-              title: "Build UI for search",
+              id: "7",
+              title: "task-2-c1-b1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'todo',
+              // status: "todo",
               subtasks: [
-                { id: 'subtask-4', title: "subtask 1", isDone: false },
-                { id: 'subtask-5', title: "subtask 1", isDone: false },
+                { id: "8", title: "subtask-1-t2-c1-b1", isDone: false },
+                { id: "9", title: "subtask-2-t2-c1-b1", isDone: false },
               ],
             },
             {
-              id: 'task-3',
-              title: "Build settings UI",
+              id: "10",
+              title: "task-3-c1-b1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'todo',
+              // status: "todo",
               subtasks: [
-                { id: 'subtask-6', title: "subtask 1", isDone: false },
-                { id: 'subtask-7', title: "subtask 2", isDone: false },
+                { id: "11", title: "subtask-1-t3-c1-b1", isDone: false },
+                { id: "12", title: "subtask-2-t3-c1-b1", isDone: false },
               ],
             },
           ],
         },
         {
-          id: 'column-2',
-          title: "doing",
+          id: "13",
+          title: "column-2-b1",
           tasks: [
             {
-              id: 'task-4',
-              title: "Lorem ipsum dolor 1",
+              id: "14",
+              title: "task-1-c2-b1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'doing',
+              // status: "doing",
               subtasks: [
-                { id: 'subtask-8', title: "subtask 1", isDone: true },
-                { id: 'subtask-9', title: "subtask 2", isDone: false },
-                { id: 'subtask-10', title: "subtask 3", isDone: false },
+                { id: "15", title: "subtask-1-t1-c2-b1", isDone: true },
+                { id: "16", title: "subtask-2-t1-c2-b1", isDone: false },
+                {
+                  id: "17",
+                  title: "subtask-3-t1-c2-b1",
+                  isDone: false,
+                },
               ],
             },
             {
-              id: 'task-5',
-              title: "Lorem ipsum dolor 3",
+              id: "18",
+              title: "task-2-c2-b1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'doing',
+              // status: "doing",
               subtasks: [
-                { id: 'subtask-11', title: "subtask 1", isDone: true },
-                { id: 'subtask-12', title: "subtask 2", isDone: false },
+                { id: "19", title: "subtask 1-t2-c2-b1", isDone: true },
+                { id: "20", title: "subtask 2-t2-c2-b1", isDone: false },
               ],
             },
           ],
         },
         {
-          id: 'column-3',
-          title: "done",
+          id: "21",
+          title: "column-3-b1",
           tasks: [
             {
-              id: 'task-6',
-              title: "Lorem ipsum dolor 1",
+              id: "22",
+              title: "task-1-c3-b1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'done',
+              // status: "done",
               subtasks: [
-                { id: 'subtask-13', title: "subtask 1", isDone: true },
-                { id: 'subtask-14', title: "subtask 2", isDone: true },
-                { id: 'subtask-15', title: "subtask 3", isDone: true },
+                { id: "23", title: "subtask 1-t1-c3-b1", isDone: true },
+                { id: "24", title: "subtask 2-t1-c3-b1", isDone: true },
+                { id: "25", title: "subtask 3-t1-c3-b1", isDone: true },
               ],
             },
             {
-              id: 'task-7',
-              title: "Lorem ipsum dolor 2",
+              id: "26",
+              title: "task-2-c3-b1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'done',
+              // status: "done",
               subtasks: [
-                { id: 'subtask-16', title: "subtask 1", isDone: true },
-                { id: 'subtask-17', title: "subtask 1", isDone: true },
+                { id: "27", title: "subtask 1-t2-c3-b1", isDone: true },
+                { id: "28", title: "subtask 1-t2-c3-b1", isDone: true },
               ],
             },
             {
-              id: 'task-8',
-              title: "Lorem ipsum dolor 3",
+              id: "29",
+              title: "task-3-c3-b1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'done',
-              subtasks: [{ id: 'subtask-18', title: "subtask 1", isDone: true }],
+              // status: "done",
+              subtasks: [
+                { id: "30", title: "subtask 1-t3-c3-b1", isDone: true },
+              ],
             },
             {
-              id: 'task-9',
-              title: "Lorem ipsum dolor 5",
+              id: "31",
+              title: "task-4-c3-b1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'done',
-              subtasks: [{ id: 'subtask-19', title: "subtask 1", isDone: true }],
+              // status: "done",
+              subtasks: [
+                { id: "32", title: "subtask 1-t3-c3-b1", isDone: true },
+              ],
             },
           ],
         },
       ],
     },
     {
-      id: 'board-2',
-      title: "help",
+      id: "33",
+      title: "board-2",
       boardIconId: 1,
       columns: [
         {
-          id: 'column-1',
-          title: "todo",
+          id: "34",
+          title: "column-1-b2",
           tasks: [
             {
-              id: 'task-1',
-              title: "Build UI for onboard flow",
+              id: "35",
+              title: "task-1-c1-b2",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'todo',
+              // status: "todo",
               subtasks: [
-                { id: 'subtask-1', title: "subtask 1", isDone: false },
-                { id: 'subtask-2', title: "subtask 2", isDone: false },
-                { id: 'subtask-3', title: "subtask 3", isDone: false },
+                { id: "36", title: "subtask 1", isDone: false },
+                { id: "37", title: "subtask 2", isDone: false },
+                { id: "38", title: "subtask 3", isDone: false },
               ],
             },
             {
-              id: 'task-2',
+              id: "39",
               title: "Build UI for search",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'todo',
-              subtasks: [{ id: 'subtask-4', title: "subtask 1", isDone: false }],
+              // status: "todo",
+              subtasks: [{ id: "40", title: "subtask 1", isDone: false }],
             },
             {
-              id: 'task-3',
+              id: "41",
               title: "Build settings UI",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'todo',
+              // status: "todo",
               subtasks: [
-                { id: 'subtask-5', title: "subtask 1", isDone: false },
-                { id: 'subtask-6', title: "subtask 2", isDone: false },
+                { id: "42", title: "subtask 1", isDone: false },
+                { id: "43", title: "subtask 2", isDone: false },
               ],
             },
           ],
         },
         {
-          id: 'column-2',
+          id: "44",
           title: "doing",
           tasks: [
             {
-              id: 'task-4',
+              id: "45",
               title: "Lorem ipsum dolor 1",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'doing',
+              // status: "doing",
               subtasks: [
-                { id: 'subtask-7', title: "subtask 1", isDone: true },
-                { id: 'subtask-8', title: "subtask 2", isDone: false },
-                { id: 'subtask-9', title: "subtask 3", isDone: false },
+                { id: "46", title: "subtask 1", isDone: true },
+                { id: "47", title: "subtask 2", isDone: false },
+                { id: "48", title: "subtask 3", isDone: false },
               ],
             },
           ],
         },
         {
-          id: 'column-3',
+          id: "49",
           title: "done",
           tasks: [
             {
-              id: 'task-5',
+              id: "50",
               title: "Lorem ipsum dolor 2",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'done',
+              // status: "done",
               subtasks: [
-                { id: 'subtask-10', title: "subtask 1", isDone: true },
-                { id: 'subtask-11', title: "subtask 1", isDone: true },
+                { id: "51", title: "subtask 1", isDone: true },
+                { id: "52", title: "subtask 1", isDone: true },
               ],
             },
             {
-              id: 'task-6',
+              id: "53",
               title: "Lorem ipsum dolor 3",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'done',
-              subtasks: [{ id: 'subtask-12', title: "subtask 1", isDone: true }],
+              // status: "done",
+              subtasks: [{ id: "54", title: "subtask 1", isDone: true }],
             },
             {
-              id: 'task-7',
+              id: "55",
               title: "Lorem ipsum dolor 5",
               description:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-              status: 'done',
-              subtasks: [{ id: 'subtask-13', title: "subtask 1", isDone: true }],
+              // status: "done",
+              subtasks: [{ id: "56", title: "subtask 1", isDone: true }],
             },
           ],
         },

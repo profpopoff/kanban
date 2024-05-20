@@ -16,7 +16,7 @@ export type Task = {
    title: string;
    description: string;
    subtasks: Subtask[];
-   status: string;
+   // status: string;
 };
 
 export type Subtask = {

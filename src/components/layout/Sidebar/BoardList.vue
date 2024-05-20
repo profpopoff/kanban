@@ -20,7 +20,7 @@ const toggleCreateBoardModal = () =>
     <h2>your boards ({{ boards.length }})</h2>
     <nav>
       <ul>
-        <li v-for="{ id, boardIconId, title } in boards">
+        <li v-for="{ id, boardIconId, title } in boards" :key="id">
           <input type="radio" :id="id" :value="id" v-model="currentBoardId" />
           <label class="board-button" :for="id">
             <BoardIcon :boardIconId="boardIconId" class="icon" />

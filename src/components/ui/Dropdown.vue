@@ -29,10 +29,10 @@ onClickOutside(dropdown, () => (isOpen.value = false));
         <ul class="options" v-show="isOpen">
           <li
             class="option"
-            v-for="(option, i) of options.filter(
+            v-for="(option, index) of options.filter(
               (option) => option !== selected
             )"
-            :key="i"
+            :key="index"
           >
             <button
               @click="
