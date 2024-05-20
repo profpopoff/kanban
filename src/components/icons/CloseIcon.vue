@@ -9,7 +9,7 @@
 <style scoped>
 svg {
   height: 100%;
-  widows: 100%;
+  width: 100%;
   fill: currentColor;
 }
 </style>

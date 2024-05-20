@@ -63,7 +63,7 @@ const toggleCreateBoardModal = () =>
     transition: all 0.3s ease-in-out;
 
     .icon {
-      height: 1.2rem;
+      width: 1.2rem;
     }
 
     span {
